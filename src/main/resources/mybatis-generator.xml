@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <classPathEntry location="/Users/lee/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.40/ef2a2ceab1735eaaae0b5d1cccf574fb7c6e1c52/mysql-connector-java-5.1.40.jar"/>
+
+    <!--<context id="mysql" targetRuntime="MyBatis3" >-->
+    <context id="mysql" defaultModelType="hierarchical" targetRuntime="MyBatis3" >
+        <property name="autoDelimitKeywords" value="false"/>
+        <!-- 生成的Java文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化java代码 -->
+        <!--<property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>-->
+        <!--&lt;!&ndash; 格式化XML代码 &ndash;&gt;-->
+        <!--<property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>-->
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/burndown?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;useConfigs=maxPerformance" userId="root" password="">
+        </jdbcConnection>
+
+        <javaTypeResolver >
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <javaModelGenerator
+                targetPackage="com.iamlile.jira.burndown.model"
+                targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <sqlMapGenerator
+                targetPackage="com.iamlile.jira.burndown.mapper"
+                targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+
+        <!--<javaClientGenerator type="XMLMAPPER"-->
+                             <!--targetPackage="com.iamlile.jira.burndown.xmlmapper"-->
+                             <!--targetProject="src/main/java">-->
+            <!--<property name="enableSubPackages" value="true" />-->
+        <!--</javaClientGenerator>-->
+
+        <javaClientGenerator type="MIXEDMAPPER" targetPackage="com.iamlile.jira.burndown.mapper" targetProject="src/main/java">
+        <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 每一个数据库表都需要建立一个对应的table字段 -->
+
+        <!--<table schema="jira" tableName="jira" domainObjectName="Jiar" >-->
+            <!--&lt;!&ndash; <property name="useActualColumnNames" value="true"/>-->
+            <!--<generatedKey column="ID" sqlStatement="DB2" identity="true" />-->
+            <!--<columnOverride column="DATE_FIELD" property="startDate" />-->
+            <!--<ignoreColumn column="FRED" />-->
+            <!--<columnOverride column="LONG_VARCHAR_FIELD" jdbcType="VARCHAR" /> &ndash;&gt;-->
+        <!--</table>-->
+
+
+        <!--生成Dao类存放位置-->
+        <!-- 客户端代码，生成易于使用的针对Model对象和XML配置文件 的代码
+                type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
+                type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
+                type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
+        -->
+        <!--<javaClientGenerator type="ANNOTATEDMAPPER" targetPackage="com.demo.dao" targetProject="src/main/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaClientGenerator>-->
+        <!--生成对应表及类名-->
+        <table tableName="jira" domainObjectName="Jira" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="jira_sprint" domainObjectName="JiraSprint" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="jira_sprintdailydata" domainObjectName="JiraSprintdailyData" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false"></table>
+
+    </context>
+</generatorConfiguration>
