@@ -5,6 +5,8 @@ import com.iamlile.jira.burndown.model.JiraSprintdailyDataKey;
 import com.iamlile.jira.burndown.model.JiraSprintdailyDataWithBLOBs;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface JiraSprintdailyDataMapper {
     /**
@@ -100,4 +102,15 @@ public interface JiraSprintdailyDataMapper {
         "where id = #{id,jdbcType=INTEGER}"
     })
     int updateByPrimaryKey(JiraSprintdailyData record);
+
+    @Select({
+            "select",
+            "id, date, remaining_work_hours, completed_work_hours, sprint_id, worker_log, ",
+            "issues_changed",
+            "from jira_sprintdailydata",
+            "where sprint_id = #{sprint_id,jdbcType=INTEGER}"
+    })
+    //@ResultType("com.iamlile.jira.burndown.model.JiraSprintdailyDataWithBLOBs")
+    @ResultMap("com.iamlile.jira.burndown.mapper.JiraSprintdailyDataMapper.getBySprintId")
+    List<JiraSprintdailyDataWithBLOBs> getBySprintId(Integer sprint_id);
 }

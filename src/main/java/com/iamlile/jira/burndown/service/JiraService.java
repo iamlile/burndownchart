@@ -2,9 +2,8 @@ package com.iamlile.jira.burndown.service;
 
 import com.iamlile.jira.burndown.mapper.JiraMapper;
 import com.iamlile.jira.burndown.mapper.JiraSprintMapper;
-import com.iamlile.jira.burndown.model.JiraKey;
-import com.iamlile.jira.burndown.model.JiraSprint;
-import com.iamlile.jira.burndown.model.JiraWithBLOBs;
+import com.iamlile.jira.burndown.mapper.JiraSprintdailyDataMapper;
+import com.iamlile.jira.burndown.model.*;
 import com.iamlile.jira.burndown.util.JiraHttpClientUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +26,9 @@ public class JiraService {
     @Autowired
     JiraMapper jiraMapper;
 
+    @Autowired
+    JiraSprintdailyDataMapper jiraSprintdailyDataMapper;
+
 
     public List<JiraSprint> getJiraSprintList(Integer jira_id, Integer board_id) {
         return jiraSprintMapper.getJiraSprintList(jira_id, board_id);
@@ -41,6 +43,10 @@ public class JiraService {
         String result_json = JiraHttpClientUtil.getJiraBoardsFromRemote(url, jira.getUsername(), jira.getPassword());
         logger.debug(result_json);
         return result_json;
+    }
+
+    public List<JiraSprintdailyDataWithBLOBs> getJiraSprintdailyDataList(Integer sprintId) {
+        return  jiraSprintdailyDataMapper.getBySprintId(sprintId);
     }
 
 }

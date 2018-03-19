@@ -113,6 +113,7 @@ public interface JiraSprintMapper {
             @Result(column = "name", property = "name", jdbcType = JdbcType.VARCHAR),
             @Result(column = "jira_id", property = "jiraId", jdbcType = JdbcType.INTEGER)
     })
+
     List<JiraSprint> getJiraSprintList(@Param("jira_id") Integer jira_id, @Param("board_id") Integer board_id);
 
 }

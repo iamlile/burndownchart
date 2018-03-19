@@ -1,4 +1,5 @@
 package com.iamlile.jira.burndown.model;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import java.util.Date;
 
@@ -10,6 +11,7 @@ public class JiraSprintdailyData extends JiraSprintdailyDataKey {
      *
      * @mbg.generated Sun Mar 11 14:31:36 CST 2018
      */
+    @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
     private Date date;
 
     /**
