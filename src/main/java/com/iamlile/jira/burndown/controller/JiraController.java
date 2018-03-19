@@ -56,7 +56,6 @@ public class JiraController {
         return result_json;
     }
 
-    //    http://121.201.118.245/api/jira/1/boards/5/sprints/25/burndown_chart/
     @RequestMapping(value = "/{jiraId}/boards/{boardId}/sprints/{sprintId}/burndown_chart/", method = RequestMethod.GET)
     public List<JiraSprintdailyDataWithBLOBs> getSprintsDailyDataBySpringId(@PathVariable Integer jiraId, @PathVariable Integer boardId, @PathVariable Integer sprintId) {
         List<JiraSprintdailyDataWithBLOBs> list = jiraService.getJiraSprintdailyDataList(sprintId);
