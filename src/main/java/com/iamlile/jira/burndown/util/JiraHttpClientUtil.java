@@ -1,8 +1,9 @@
 package com.iamlile.jira.burndown.util;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParser;
+import com.iamlile.jira.burndown.mapper.JiraMapper;
+import com.iamlile.jira.burndown.mapper.JiraSprintMapper;
+import com.iamlile.jira.burndown.model.JiraKey;
+import com.iamlile.jira.burndown.model.JiraWithBLOBs;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -11,11 +12,17 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import javax.xml.bind.DatatypeConverter;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by lee on 2018/2/17.
@@ -27,6 +34,8 @@ public class JiraHttpClientUtil {
     //"http://pm.igeeker.org/rest/agile/1.0/board/?type=scrum"
 
     public static String JIRA_SPRINTS_URL = "rest/agile/1.0/board/board_id/sprint";
+
+
 
     public static String getJiraBoardsFromRemote(String url, String username, String pwd) {
         HttpClient httpclient = null;
@@ -77,11 +86,23 @@ public class JiraHttpClientUtil {
     }
 
     public static void main(String[] args) {
-        //String path = "http://pm.igeeker.org/" + JIRA_BOARDS_URL;
-        String path = "http://pm.igeeker.org/" + JIRA_SPRINTS_URL;
-        path = path.replaceAll("board_id","5");
-        System.out.println(path);
-        JiraHttpClientUtil.getJiraBoardsFromRemote(path, "atc", "AsdQwe123");
+//        String path = "http://pm.igeeker.org/" + JIRA_BOARDS_URL;
+//        //String path = "http://pm.igeeker.org/" + JIRA_SPRINTS_URL;
+//        path = path.replaceAll("board_id","5");
+//        System.out.println(path);
+//        String result = JiraHttpClientUtil.getJiraBoardsFromRemote(path, "atc", "23445");
+//        System.out.println(result);
+
+        String str = "[\"5\",\"13\",\"15\",\"19\"]";
+        //System.out.println(str.replaceAll("\\[|\\]","").replaceAll("\\\"",""));
+        //System.out.println(str.replaceAll("(\\[|\\]|\\\")",""));
+        List<String> boardList = Arrays.asList(str.replaceAll("\\[|\\]|\\\"","").split(","));
+        for(String boardId : boardList){
+            System.out.println(boardId);
+        }
+
+
+        //List<String> boardList = Arrays.asList(str.replaceAll("\\[|\\]","").split(","));
 
     }
 

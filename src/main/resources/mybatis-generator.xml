@@ -67,15 +67,21 @@
             <!--<property name="enableSubPackages" value="true"/>-->
         <!--</javaClientGenerator>-->
         <!--生成对应表及类名-->
-        <table tableName="jira" domainObjectName="Jira" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <!--<table tableName="jira" domainObjectName="Jira" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
+
         <table tableName="jira_sprint" domainObjectName="JiraSprint" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"></table>
-        <table tableName="jira_sprintdailydata" domainObjectName="JiraSprintdailyData" enableCountByExample="false"
-               enableUpdateByExample="false" enableDeleteByExample="false"
-               enableSelectByExample="false" selectByExampleQueryId="false"></table>
+               enableSelectByExample="false" selectByExampleQueryId="false">
+            <columnOverride column="start_date" javaType="java.lang.String" jdbcType="DATE" />
+            <columnOverride column="end_date" javaType="java.lang.String" jdbcType="DATE" />
+            <columnOverride column="complete_date" javaType="java.lang.String" jdbcType="DATE" />
+        </table>
+
+        <!--<table tableName="jira_sprintdailydata" domainObjectName="JiraSprintdailyData" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false"-->
+               <!--enableSelectByExample="false" selectByExampleQueryId="false"></table>-->
 
     </context>
 </generatorConfiguration>

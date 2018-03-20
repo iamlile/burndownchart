@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -47,6 +48,28 @@ public class JiraService {
 
     public List<JiraSprintdailyDataWithBLOBs> getJiraSprintdailyDataList(Integer sprintId) {
         return  jiraSprintdailyDataMapper.getBySprintId(sprintId);
+    }
+
+    public void setJiraSprint(Integer jiraId){
+
+        JiraKey jiraKey = new JiraKey();
+        jiraKey.setId(jiraId);
+        JiraWithBLOBs jira = jiraMapper.selectByPrimaryKey(jiraKey);
+        String username = jira.getUsername();
+        String pass = jira.getPassword();
+        String board_str = jira.getBoardWatch();
+        List<String> boardList = Arrays.asList(board_str.replaceAll("\\[|\\]|\\\"","").split(","));
+        for(String boardId:boardList){
+            System.out.println(boardId);
+            String path = "http://pm.igeeker.org/" + JiraHttpClientUtil.JIRA_SPRINTS_URL;
+            path = path.replaceAll("board_id",boardId);
+            System.out.println(path);
+            String result = JiraHttpClientUtil.getJiraBoardsFromRemote(path, username, pass);
+            System.out.println("----------");
+            System.out.println(result);
+        }
+
+
     }
 
 }

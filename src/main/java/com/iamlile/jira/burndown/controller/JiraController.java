@@ -62,6 +62,13 @@ public class JiraController {
         return list;
     }
 
+    @RequestMapping(value = "/{jiraId}/boards/setsprints/", method = RequestMethod.GET)
+    public void  setJiraSprints(@PathVariable Integer jiraId) {
+        jiraService.setJiraSprint(1);
+
+    }
+
+
 
 
 }
