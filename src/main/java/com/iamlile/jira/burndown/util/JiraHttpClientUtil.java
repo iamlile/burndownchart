@@ -35,6 +35,7 @@ public class JiraHttpClientUtil {
 
     public static String JIRA_SPRINTS_URL = "rest/agile/1.0/board/board_id/sprint";
 
+    public static String JIRA_ISSUE_URL = "rest/agile/1.0/board/board_id/sprint/sprint_id/issue";
 
 
     public static String getJiraBoardsFromRemote(String url, String username, String pwd) {
@@ -90,7 +91,7 @@ public class JiraHttpClientUtil {
 //        //String path = "http://pm.igeeker.org/" + JIRA_SPRINTS_URL;
 //        path = path.replaceAll("board_id","5");
 //        System.out.println(path);
-//        String result = JiraHttpClientUtil.getJiraBoardsFromRemote(path, "atc", "23445");
+//        String result = JiraHttpClientUtil.getJiraBoardsFromRemote(path, "atc", "AsdQwe123");
 //        System.out.println(result);
 
         String str = "[\"5\",\"13\",\"15\",\"19\"]";
