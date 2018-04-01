@@ -19,7 +19,7 @@ public class JiraServiceTest {
     @org.junit.Test
     public void testSetJiraSprint() throws Exception {
     //    jiraService.setJiraSprint(1);
-       jiraService.addSprintDailyData(1);
+       //jiraService.addSprintDailyData(1);
     /*  BurnDownChartData burnDownChartData =  jiraService.getBurnChartData(13,49);
         System.out.println(burnDownChartData);*/
     }

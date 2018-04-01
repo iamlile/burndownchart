@@ -1,6 +1,6 @@
 package com.iamlile.jira.burndown.vo;
 
-public class  Assignee{
+public class Assignee {
     private String displayName;
     private boolean active;
 

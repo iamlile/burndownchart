@@ -7,12 +7,12 @@ import java.util.Map;
  * Created by macpro on 2018/3/22.
  */
 public class BurnDownChartData {
-    private List xAisxData ;
-    private Long yAisxMax ;
+    private List xAisxData;
+    private Long yAisxMax;
     private List guideline;
     private List completeHour;
     private List remainHour;
-    private Map<String,List> workerLogs;
+    private Map<String, List> workerLogs;
 
     public List getxAisxData() {
         return xAisxData;
