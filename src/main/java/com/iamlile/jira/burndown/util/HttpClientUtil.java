@@ -405,7 +405,7 @@ public class HttpClientUtil {
 
         Map<String,String> map = new HashMap<>();
         map.put("username","atc");
-        map.put("password","AsdQwe123");
+        map.put("password","123456");
         System.out.println(sendHttpPost("http://pm.igeeker.org/rest/agile/1.0/board/?type=scrum",map));
 
     }
