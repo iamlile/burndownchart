@@ -108,7 +108,7 @@ public interface JiraSprintdailyDataMapper {
             "id, date, remaining_work_hours, completed_work_hours, sprint_id, worker_log, ",
             "issues_changed",
             "from jira_sprintdailydata",
-            "where sprint_id = #{sprint_id,jdbcType=INTEGER}"
+            "where sprint_id = #{sprint_id,jdbcType=INTEGER} order by date"
     })
     //@ResultType("com.iamlile.jira.burndown.model.JiraSprintdailyDataWithBLOBs")
     @ResultMap("com.iamlile.jira.burndown.mapper.JiraSprintdailyDataMapper.getBySprintId")

@@ -1,5 +1,6 @@
 package com.iamlile.jira.burndown.service;
 
+import com.iamlile.jira.burndown.vo.BurnDownChartData;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,9 @@ public class JiraServiceTest {
 
     @org.junit.Test
     public void testSetJiraSprint() throws Exception {
-        jiraService.setJiraSprint(1);
-
+    //    jiraService.setJiraSprint(1);
+       jiraService.addSprintDailyData(1);
+    /*  BurnDownChartData burnDownChartData =  jiraService.getBurnChartData(13,49);
+        System.out.println(burnDownChartData);*/
     }
 }

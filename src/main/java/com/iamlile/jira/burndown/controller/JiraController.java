@@ -6,6 +6,7 @@ import com.iamlile.jira.burndown.mapper.JiraMapper;
 import com.iamlile.jira.burndown.model.*;
 import com.iamlile.jira.burndown.service.JiraService;
 import com.iamlile.jira.burndown.util.JiraHttpClientUtil;
+import com.iamlile.jira.burndown.vo.BurnDownChartData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,9 +58,9 @@ public class JiraController {
     }
 
     @RequestMapping(value = "/{jiraId}/boards/{boardId}/sprints/{sprintId}/burndown_chart/", method = RequestMethod.GET)
-    public List<JiraSprintdailyDataWithBLOBs> getSprintsDailyDataBySpringId(@PathVariable Integer jiraId, @PathVariable Integer boardId, @PathVariable Integer sprintId) {
-        List<JiraSprintdailyDataWithBLOBs> list = jiraService.getJiraSprintdailyDataList(sprintId);
-        return list;
+    public BurnDownChartData getSprintsDailyDataBySpringId(@PathVariable Integer jiraId, @PathVariable Integer boardId, @PathVariable Integer sprintId) {
+        BurnDownChartData burnDownChartData = jiraService.getBurnChartData(boardId,sprintId);
+        return burnDownChartData;
     }
 
     @RequestMapping(value = "/{jiraId}/boards/setsprints/", method = RequestMethod.GET)
@@ -67,7 +68,6 @@ public class JiraController {
         jiraService.setJiraSprint(1);
 
     }
-
 
 
 

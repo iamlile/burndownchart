@@ -129,4 +129,14 @@ public interface JiraSprintMapper {
     })
     List<JiraSprint> getJiraSprintList(@Param("jira_id") Integer jira_id, @Param("board_id") Integer board_id);
 
+    @Select({
+            "select",
+            "id, board_id, sprint_id_in_jira, name, jira_id, start_date, end_date, complete_date, ",
+            "working_day_plan, cross_ver_issues, issues",
+            "from jira_sprint",
+            "where sprint_id_in_jira = #{sprint_id_in_jira}"
+    })
+    @ResultMap("com.iamlile.jira.burndown.mapper.JiraSprintMapper.ResultMapWithBLOBs")
+    JiraSprintWithBLOBs getJiraSprint(@Param("sprint_id_in_jira") Integer sprint_id_in_jira);
+
 }
